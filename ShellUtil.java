@@ -105,7 +105,7 @@ public class ShellUtil {
         return (str == null || str.trim().equals("") || "null".equals(str));
     }
             public static void main(String args[]) throws Exception {
-                ShellUtil executor = new ShellUtil("10.1.105.223", "mid", "ncl@sinosoft./zt");
+                ShellUtil executor = new ShellUtil("127.0.0.1", "mid", "mid");
                 System.out.println(executor.exec("sh /app/logsshell.sh state"));
                 System.out.println("---------end---------");
           }
