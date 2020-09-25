@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinosoft.lis.dao.LxtbxmlstoreMapper">
+  <resultMap id="BaseResultMap" type="com.sinosoft.lis.entity.Lxtbxmlstore">
+    <id column="SerialNo" jdbcType="BIGINT" property="serialno" />
+    <result column="TransType" jdbcType="VARCHAR" property="transtype" />
+    <result column="PolicyType" jdbcType="VARCHAR" property="policytype" />
+    <result column="InterfaceType" jdbcType="VARCHAR" property="interfacetype" />
+    <result column="XmlType" jdbcType="VARCHAR" property="xmltype" />
+    <result column="XmlPath" jdbcType="VARCHAR" property="xmlpath" />
+    <result column="Operator" jdbcType="VARCHAR" property="operator" />
+    <result column="MakeDate" jdbcType="DATE" property="makedate" />
+    <result column="MakeTime" jdbcType="CHAR" property="maketime" />
+    <result column="ModifyDate" jdbcType="DATE" property="modifydate" />
+    <result column="ModifyTime" jdbcType="CHAR" property="modifytime" />
+    <result column="StandByFlag1" jdbcType="VARCHAR" property="standbyflag1" />
+    <result column="StandByFlag2" jdbcType="VARCHAR" property="standbyflag2" />
+    <result column="StandByFlag3" jdbcType="VARCHAR" property="standbyflag3" />
+    <result column="StandByFlag4" jdbcType="VARCHAR" property="standbyflag4" />
+    <result column="StandByFlag5" jdbcType="VARCHAR" property="standbyflag5" />
+    <result column="ErrorFlag" jdbcType="CHAR" property="errorflag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      SerialNo, TransType, PolicyType, InterfaceType, XmlType, XmlPath, Operator, MakeDate, 
+      MakeTime, ModifyDate, ModifyTime, StandByFlag1, StandByFlag2, StandByFlag3, StandByFlag4, 
+      StandByFlag5, ErrorFlag
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" parameterType="com.sinosoft.lis.entity.LxtbxmlstoreCondition" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from LXTBXMLSTORE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null">
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    SerialNo,TransType,PolicyType,InterfaceType,XmlType,XmlPath,Operator,MakeDate,MakeTime,ModifyDate,ModifyTime,StandByFlag1,StandByFlag2,StandByFlag3,StandByFlag4,StandByFlag5,ErrorFlag
+    from LXTBXMLSTORE
+    where SerialNo = #{serialno,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from LXTBXMLSTORE
+    where SerialNo = #{serialno,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sinosoft.lis.entity.LxtbxmlstoreCondition">
+    delete from LXTBXMLSTORE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sinosoft.lis.entity.Lxtbxmlstore">
+    insert into LXTBXMLSTORE (SerialNo, TransType, PolicyType, 
+      InterfaceType, XmlType, XmlPath, 
+      Operator, MakeDate, MakeTime, 
+      ModifyDate, ModifyTime, StandByFlag1, 
+      StandByFlag2, StandByFlag3, StandByFlag4, 
+      StandByFlag5, ErrorFlag)
+    values (#{serialno,jdbcType=BIGINT}, #{transtype,jdbcType=VARCHAR}, #{policytype,jdbcType=VARCHAR}, 
+      #{interfacetype,jdbcType=VARCHAR}, #{xmltype,jdbcType=VARCHAR}, #{xmlpath,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{makedate,jdbcType=DATE}, #{maketime,jdbcType=CHAR}, 
+      #{modifydate,jdbcType=DATE}, #{modifytime,jdbcType=CHAR}, #{standbyflag1,jdbcType=VARCHAR}, 
+      #{standbyflag2,jdbcType=VARCHAR}, #{standbyflag3,jdbcType=VARCHAR}, #{standbyflag4,jdbcType=VARCHAR}, 
+      #{standbyflag5,jdbcType=VARCHAR}, #{errorflag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinosoft.lis.entity.Lxtbxmlstore">
+    insert into LXTBXMLSTORE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serialno != null">
+        SerialNo,
+      </if>
+      <if test="transtype != null">
+        TransType,
+      </if>
+      <if test="policytype != null">
+        PolicyType,
+      </if>
+      <if test="interfacetype != null">
+        InterfaceType,
+      </if>
+      <if test="xmltype != null">
+        XmlType,
+      </if>
+      <if test="xmlpath != null">
+        XmlPath,
+      </if>
+      <if test="operator != null">
+        Operator,
+      </if>
+      <if test="makedate != null">
+        MakeDate,
+      </if>
+      <if test="maketime != null">
+        MakeTime,
+      </if>
+      <if test="modifydate != null">
+        ModifyDate,
+      </if>
+      <if test="modifytime != null">
+        ModifyTime,
+      </if>
+      <if test="standbyflag1 != null">
+        StandByFlag1,
+      </if>
+      <if test="standbyflag2 != null">
+        StandByFlag2,
+      </if>
+      <if test="standbyflag3 != null">
+        StandByFlag3,
+      </if>
+      <if test="standbyflag4 != null">
+        StandByFlag4,
+      </if>
+      <if test="standbyflag5 != null">
+        StandByFlag5,
+      </if>
+      <if test="errorflag != null">
+        ErrorFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serialno != null">
+        #{serialno,jdbcType=BIGINT},
+      </if>
+      <if test="transtype != null">
+        #{transtype,jdbcType=VARCHAR},
+      </if>
+      <if test="policytype != null">
+        #{policytype,jdbcType=VARCHAR},
+      </if>
+      <if test="interfacetype != null">
+        #{interfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="xmltype != null">
+        #{xmltype,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlpath != null">
+        #{xmlpath,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="makedate != null">
+        #{makedate,jdbcType=DATE},
+      </if>
+      <if test="maketime != null">
+        #{maketime,jdbcType=CHAR},
+      </if>
+      <if test="modifydate != null">
+        #{modifydate,jdbcType=DATE},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=CHAR},
+      </if>
+      <if test="standbyflag1 != null">
+        #{standbyflag1,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag2 != null">
+        #{standbyflag2,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag3 != null">
+        #{standbyflag3,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag4 != null">
+        #{standbyflag4,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag5 != null">
+        #{standbyflag5,jdbcType=VARCHAR},
+      </if>
+      <if test="errorflag != null">
+        #{errorflag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sinosoft.lis.entity.LxtbxmlstoreCondition" resultType="java.lang.Long">
+    select count(*) from LXTBXMLSTORE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update LXTBXMLSTORE
+    <set>
+      <if test="record.serialno != null">
+        SerialNo = #{record.serialno,jdbcType=BIGINT},
+      </if>
+      <if test="record.transtype != null">
+        TransType = #{record.transtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policytype != null">
+        PolicyType = #{record.policytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interfacetype != null">
+        InterfaceType = #{record.interfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xmltype != null">
+        XmlType = #{record.xmltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xmlpath != null">
+        XmlPath = #{record.xmlpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operator != null">
+        Operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.makedate != null">
+        MakeDate = #{record.makedate,jdbcType=DATE},
+      </if>
+      <if test="record.maketime != null">
+        MakeTime = #{record.maketime,jdbcType=CHAR},
+      </if>
+      <if test="record.modifydate != null">
+        ModifyDate = #{record.modifydate,jdbcType=DATE},
+      </if>
+      <if test="record.modifytime != null">
+        ModifyTime = #{record.modifytime,jdbcType=CHAR},
+      </if>
+      <if test="record.standbyflag1 != null">
+        StandByFlag1 = #{record.standbyflag1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standbyflag2 != null">
+        StandByFlag2 = #{record.standbyflag2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standbyflag3 != null">
+        StandByFlag3 = #{record.standbyflag3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standbyflag4 != null">
+        StandByFlag4 = #{record.standbyflag4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standbyflag5 != null">
+        StandByFlag5 = #{record.standbyflag5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.errorflag != null">
+        ErrorFlag = #{record.errorflag,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update LXTBXMLSTORE
+    set SerialNo = #{record.serialno,jdbcType=BIGINT},
+      TransType = #{record.transtype,jdbcType=VARCHAR},
+      PolicyType = #{record.policytype,jdbcType=VARCHAR},
+      InterfaceType = #{record.interfacetype,jdbcType=VARCHAR},
+      XmlType = #{record.xmltype,jdbcType=VARCHAR},
+      XmlPath = #{record.xmlpath,jdbcType=VARCHAR},
+      Operator = #{record.operator,jdbcType=VARCHAR},
+      MakeDate = #{record.makedate,jdbcType=DATE},
+      MakeTime = #{record.maketime,jdbcType=CHAR},
+      ModifyDate = #{record.modifydate,jdbcType=DATE},
+      ModifyTime = #{record.modifytime,jdbcType=CHAR},
+      StandByFlag1 = #{record.standbyflag1,jdbcType=VARCHAR},
+      StandByFlag2 = #{record.standbyflag2,jdbcType=VARCHAR},
+      StandByFlag3 = #{record.standbyflag3,jdbcType=VARCHAR},
+      StandByFlag4 = #{record.standbyflag4,jdbcType=VARCHAR},
+      StandByFlag5 = #{record.standbyflag5,jdbcType=VARCHAR},
+      ErrorFlag = #{record.errorflag,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinosoft.lis.entity.Lxtbxmlstore">
+    update LXTBXMLSTORE
+    <set>
+      <if test="transtype != null">
+        TransType = #{transtype,jdbcType=VARCHAR},
+      </if>
+      <if test="policytype != null">
+        PolicyType = #{policytype,jdbcType=VARCHAR},
+      </if>
+      <if test="interfacetype != null">
+        InterfaceType = #{interfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="xmltype != null">
+        XmlType = #{xmltype,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlpath != null">
+        XmlPath = #{xmlpath,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        Operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="makedate != null">
+        MakeDate = #{makedate,jdbcType=DATE},
+      </if>
+      <if test="maketime != null">
+        MakeTime = #{maketime,jdbcType=CHAR},
+      </if>
+      <if test="modifydate != null">
+        ModifyDate = #{modifydate,jdbcType=DATE},
+      </if>
+      <if test="modifytime != null">
+        ModifyTime = #{modifytime,jdbcType=CHAR},
+      </if>
+      <if test="standbyflag1 != null">
+        StandByFlag1 = #{standbyflag1,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag2 != null">
+        StandByFlag2 = #{standbyflag2,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag3 != null">
+        StandByFlag3 = #{standbyflag3,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag4 != null">
+        StandByFlag4 = #{standbyflag4,jdbcType=VARCHAR},
+      </if>
+      <if test="standbyflag5 != null">
+        StandByFlag5 = #{standbyflag5,jdbcType=VARCHAR},
+      </if>
+      <if test="errorflag != null">
+        ErrorFlag = #{errorflag,jdbcType=CHAR},
+      </if>
+    </set>
+    where SerialNo = #{serialno,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinosoft.lis.entity.Lxtbxmlstore">
+    update LXTBXMLSTORE
+    set TransType = #{transtype,jdbcType=VARCHAR},
+      PolicyType = #{policytype,jdbcType=VARCHAR},
+      InterfaceType = #{interfacetype,jdbcType=VARCHAR},
+      XmlType = #{xmltype,jdbcType=VARCHAR},
+      XmlPath = #{xmlpath,jdbcType=VARCHAR},
+      Operator = #{operator,jdbcType=VARCHAR},
+      MakeDate = #{makedate,jdbcType=DATE},
+      MakeTime = #{maketime,jdbcType=CHAR},
+      ModifyDate = #{modifydate,jdbcType=DATE},
+      ModifyTime = #{modifytime,jdbcType=CHAR},
+      StandByFlag1 = #{standbyflag1,jdbcType=VARCHAR},
+      StandByFlag2 = #{standbyflag2,jdbcType=VARCHAR},
+      StandByFlag3 = #{standbyflag3,jdbcType=VARCHAR},
+      StandByFlag4 = #{standbyflag4,jdbcType=VARCHAR},
+      StandByFlag5 = #{standbyflag5,jdbcType=VARCHAR},
+      ErrorFlag = #{errorflag,jdbcType=CHAR}
+    where SerialNo = #{serialno,jdbcType=BIGINT}
+  </update>
+</mapper>
