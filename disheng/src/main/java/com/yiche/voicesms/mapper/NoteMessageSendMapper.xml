@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiche.voicesms.dao.NoteMessageSendMapper" >
+  <resultMap id="BaseResultMap" type="com.yiche.voicesms.model.NoteMessageSend" >
+    <id column="Id" property="id" jdbcType="BIGINT" />
+    <result column="MobilePhoneNum" property="mobilePhoneNum" jdbcType="VARCHAR" />
+    <result column="MessageSendMainId" property="messageSendMainId" jdbcType="BIGINT" />
+    <result column="OrderId" property="orderId" jdbcType="SMALLINT" />
+    <result column="ApiBigId" property="apiBigId" jdbcType="VARCHAR" />
+    <result column="ApiFinalyStatus" property="apiFinalyStatus" jdbcType="SMALLINT" />
+    <result column="ApiFinalyDes" property="apiFinalyDes" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ApiFinalyTime" property="apiFinalyTime" jdbcType="TIMESTAMP" />
+    <result column="UserReceiveTime" property="userReceiveTime" jdbcType="TIMESTAMP" />
+    <result column="Appid" property="appid" jdbcType="INTEGER" />
+    <result column="CompanyId" property="companyId" jdbcType="INTEGER" />
+    <result column="RoutewayId" property="routewayId" jdbcType="INTEGER" />
+    <result column="MessageSendContentId" property="messageSendContentId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, MobilePhoneNum, MessageSendMainId, OrderId, ApiBigId, ApiFinalyStatus, ApiFinalyDes, 
+    CreateTime, ApiFinalyTime, UserReceiveTime, Appid, CompanyId, RoutewayId, MessageSendContentId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from NoteMessageSend
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from NoteMessageSend
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yiche.voicesms.model.NoteMessageSend" >
+    insert into NoteMessageSend (Id, MobilePhoneNum, MessageSendMainId, 
+      OrderId, ApiBigId, ApiFinalyStatus, 
+      ApiFinalyDes, CreateTime, ApiFinalyTime, 
+      UserReceiveTime, Appid, CompanyId, 
+      RoutewayId, MessageSendContentId)
+    values (#{id,jdbcType=BIGINT}, #{mobilePhoneNum,jdbcType=VARCHAR}, #{messageSendMainId,jdbcType=BIGINT}, 
+      #{orderId,jdbcType=SMALLINT}, #{apiBigId,jdbcType=VARCHAR}, #{apiFinalyStatus,jdbcType=SMALLINT}, 
+      #{apiFinalyDes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{apiFinalyTime,jdbcType=TIMESTAMP}, 
+      #{userReceiveTime,jdbcType=TIMESTAMP}, #{appid,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, 
+      #{routewayId,jdbcType=INTEGER}, #{messageSendContentId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiche.voicesms.model.NoteMessageSend" >
+    insert into NoteMessageSend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="mobilePhoneNum != null" >
+        MobilePhoneNum,
+      </if>
+      <if test="messageSendMainId != null" >
+        MessageSendMainId,
+      </if>
+      <if test="orderId != null" >
+        OrderId,
+      </if>
+      <if test="apiBigId != null" >
+        ApiBigId,
+      </if>
+      <if test="apiFinalyStatus != null" >
+        ApiFinalyStatus,
+      </if>
+      <if test="apiFinalyDes != null" >
+        ApiFinalyDes,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+      <if test="apiFinalyTime != null" >
+        ApiFinalyTime,
+      </if>
+      <if test="userReceiveTime != null" >
+        UserReceiveTime,
+      </if>
+      <if test="appid != null" >
+        Appid,
+      </if>
+      <if test="companyId != null" >
+        CompanyId,
+      </if>
+      <if test="routewayId != null" >
+        RoutewayId,
+      </if>
+      <if test="messageSendContentId != null" >
+        MessageSendContentId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mobilePhoneNum != null" >
+        #{mobilePhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSendMainId != null" >
+        #{messageSendMainId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=SMALLINT},
+      </if>
+      <if test="apiBigId != null" >
+        #{apiBigId,jdbcType=VARCHAR},
+      </if>
+      <if test="apiFinalyStatus != null" >
+        #{apiFinalyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="apiFinalyDes != null" >
+        #{apiFinalyDes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apiFinalyTime != null" >
+        #{apiFinalyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userReceiveTime != null" >
+        #{userReceiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="routewayId != null" >
+        #{routewayId,jdbcType=INTEGER},
+      </if>
+      <if test="messageSendContentId != null" >
+        #{messageSendContentId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiche.voicesms.model.NoteMessageSend" >
+    update NoteMessageSend
+    <set >
+      <if test="mobilePhoneNum != null" >
+        MobilePhoneNum = #{mobilePhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSendMainId != null" >
+        MessageSendMainId = #{messageSendMainId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        OrderId = #{orderId,jdbcType=SMALLINT},
+      </if>
+      <if test="apiBigId != null" >
+        ApiBigId = #{apiBigId,jdbcType=VARCHAR},
+      </if>
+      <if test="apiFinalyStatus != null" >
+        ApiFinalyStatus = #{apiFinalyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="apiFinalyDes != null" >
+        ApiFinalyDes = #{apiFinalyDes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apiFinalyTime != null" >
+        ApiFinalyTime = #{apiFinalyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userReceiveTime != null" >
+        UserReceiveTime = #{userReceiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appid != null" >
+        Appid = #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        CompanyId = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="routewayId != null" >
+        RoutewayId = #{routewayId,jdbcType=INTEGER},
+      </if>
+      <if test="messageSendContentId != null" >
+        MessageSendContentId = #{messageSendContentId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiche.voicesms.model.NoteMessageSend" >
+    update NoteMessageSend
+    set MobilePhoneNum = #{mobilePhoneNum,jdbcType=VARCHAR},
+      MessageSendMainId = #{messageSendMainId,jdbcType=BIGINT},
+      OrderId = #{orderId,jdbcType=SMALLINT},
+      ApiBigId = #{apiBigId,jdbcType=VARCHAR},
+      ApiFinalyStatus = #{apiFinalyStatus,jdbcType=SMALLINT},
+      ApiFinalyDes = #{apiFinalyDes,jdbcType=VARCHAR},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      ApiFinalyTime = #{apiFinalyTime,jdbcType=TIMESTAMP},
+      UserReceiveTime = #{userReceiveTime,jdbcType=TIMESTAMP},
+      Appid = #{appid,jdbcType=INTEGER},
+      CompanyId = #{companyId,jdbcType=INTEGER},
+      RoutewayId = #{routewayId,jdbcType=INTEGER},
+      MessageSendContentId = #{messageSendContentId,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

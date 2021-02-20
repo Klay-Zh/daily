@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width: 100%;
+            border: 1px solid #CCCCCC;
+            border-collapse: collapse;
+        }
+        table th{
+            border: 1px solid #CCCCCC;
+        }
+        table td{
+            border: 1px solid #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%; border:1px solid #CCC; ">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>年龄</th>
+                <th>编辑</th>
+            </tr>
+            <tr th:each="user:${users}">
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.age}"></td>
+                <td><a th:onclick="'editUser('+${user.userId}+');'">编辑</a></td>
+            </tr>
+        </thead>
+    </table>
+    <div id="divEdit" style="position: fixed; left:30%; top:150px; width: 400px; display: none; z-index: 10; background-color: aliceblue;">
+        <table>
+            <tr><td colspan="2" style="background-color: lightskyblue; text-align: center; font-weight: bold;color: black;">修改</td></tr>
+            <tr><th>用户编号：</th><td><span id="lblUserId"></span></td></tr>
+            <tr><th>用户名称：</th><td><input type="text" id="txtUserName" name="txtUserName" /></td></tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" id="btnSave" onclick="update()" value="保存"/>
+                    <input type="button" id="btnSave" onclick="cancel()" value="取消"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="/resources/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" >
+        function editUser(userId) {
+            $("#lblUserId").html(userId);
+            $("#txtUserName").val("");
+            $("#divEdit").show();
+        }
+
+        function update() {
+            var postdata={userId:$("#lblUserId").html(),username:$("#txtUserName").val()};
+            $.ajax({
+                type : 'POST',
+                url : "/user/update",
+                contentType : "application/json",
+                data : JSON.stringify(postdata),
+                dataType : "json"
+            }).done(function(data) {
+                if(data.success != "ok"){
+                    alert(data.success);
+                }else{
+                    alert("更新成功");
+                    window.location.reload();
+                }
+            });
+        }
+
+        function cancel() {
+            $("#divEdit").hide();
+        }
+    </script>
+</body>
+</html>

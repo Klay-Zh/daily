@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiche.voicesms.dao.VoiceSmsStatusReportMapper" >
+  <resultMap id="BaseResultMap" type="com.yiche.voicesms.model.VoiceSmsStatusReport" >
+    <id column="Id" property="id" jdbcType="BIGINT" />
+    <result column="MsgId" property="msgId" jdbcType="VARCHAR" />
+    <result column="Result" property="result" jdbcType="VARCHAR" />
+    <result column="Duration" property="duration" jdbcType="INTEGER" />
+    <result column="Callee" property="callee" jdbcType="VARCHAR" />
+    <result column="CalledTimes" property="calledTimes" jdbcType="INTEGER" />
+    <result column="Status" property="status" jdbcType="VARCHAR" />
+    <result column="Describe" property="describe" jdbcType="VARCHAR" />
+    <result column="PressKeys" property="pressKeys" jdbcType="VARCHAR" />
+    <result column="ReportTime" property="reportTime" jdbcType="TIMESTAMP" />
+    <result column="StartTime" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="AnswerTime" property="answerTime" jdbcType="TIMESTAMP" />
+    <result column="RingingTimeLong" property="ringingTimeLong" jdbcType="INTEGER" />
+    <result column="RecordUrl" property="recordUrl" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, MsgId, Result, Duration, Callee, CalledTimes, Status, Describe, PressKeys, ReportTime, 
+    StartTime, AnswerTime, RingingTimeLong, RecordUrl, CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from VoiceSmsStatusReport
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from VoiceSmsStatusReport
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yiche.voicesms.model.VoiceSmsStatusReport" >
+    insert into VoiceSmsStatusReport (Id, MsgId, Result, 
+      Duration, Callee, CalledTimes, 
+      Status, Describe, PressKeys, 
+      ReportTime, StartTime, AnswerTime, 
+      RingingTimeLong, RecordUrl, CreateTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{msgId,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{duration,jdbcType=INTEGER}, #{callee,jdbcType=VARCHAR}, #{calledTimes,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, #{pressKeys,jdbcType=VARCHAR}, 
+      #{reportTime,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP}, #{answerTime,jdbcType=TIMESTAMP}, 
+      #{ringingTimeLong,jdbcType=INTEGER}, #{recordUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiche.voicesms.model.VoiceSmsStatusReport" >
+    insert into VoiceSmsStatusReport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="msgId != null" >
+        MsgId,
+      </if>
+      <if test="result != null" >
+        Result,
+      </if>
+      <if test="duration != null" >
+        Duration,
+      </if>
+      <if test="callee != null" >
+        Callee,
+      </if>
+      <if test="calledTimes != null" >
+        CalledTimes,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="describe != null" >
+        Describe,
+      </if>
+      <if test="pressKeys != null" >
+        PressKeys,
+      </if>
+      <if test="reportTime != null" >
+        ReportTime,
+      </if>
+      <if test="startTime != null" >
+        StartTime,
+      </if>
+      <if test="answerTime != null" >
+        AnswerTime,
+      </if>
+      <if test="ringingTimeLong != null" >
+        RingingTimeLong,
+      </if>
+      <if test="recordUrl != null" >
+        RecordUrl,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="msgId != null" >
+        #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="callee != null" >
+        #{callee,jdbcType=VARCHAR},
+      </if>
+      <if test="calledTimes != null" >
+        #{calledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="pressKeys != null" >
+        #{pressKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerTime != null" >
+        #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ringingTimeLong != null" >
+        #{ringingTimeLong,jdbcType=INTEGER},
+      </if>
+      <if test="recordUrl != null" >
+        #{recordUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiche.voicesms.model.VoiceSmsStatusReport" >
+    update VoiceSmsStatusReport
+    <set >
+      <if test="msgId != null" >
+        MsgId = #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        Result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        Duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="callee != null" >
+        Callee = #{callee,jdbcType=VARCHAR},
+      </if>
+      <if test="calledTimes != null" >
+        CalledTimes = #{calledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        Describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="pressKeys != null" >
+        PressKeys = #{pressKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        ReportTime = #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        StartTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerTime != null" >
+        AnswerTime = #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ringingTimeLong != null" >
+        RingingTimeLong = #{ringingTimeLong,jdbcType=INTEGER},
+      </if>
+      <if test="recordUrl != null" >
+        RecordUrl = #{recordUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiche.voicesms.model.VoiceSmsStatusReport" >
+    update VoiceSmsStatusReport
+    set MsgId = #{msgId,jdbcType=VARCHAR},
+      Result = #{result,jdbcType=VARCHAR},
+      Duration = #{duration,jdbcType=INTEGER},
+      Callee = #{callee,jdbcType=VARCHAR},
+      CalledTimes = #{calledTimes,jdbcType=INTEGER},
+      Status = #{status,jdbcType=VARCHAR},
+      Describe = #{describe,jdbcType=VARCHAR},
+      PressKeys = #{pressKeys,jdbcType=VARCHAR},
+      ReportTime = #{reportTime,jdbcType=TIMESTAMP},
+      StartTime = #{startTime,jdbcType=TIMESTAMP},
+      AnswerTime = #{answerTime,jdbcType=TIMESTAMP},
+      RingingTimeLong = #{ringingTimeLong,jdbcType=INTEGER},
+      RecordUrl = #{recordUrl,jdbcType=VARCHAR},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
