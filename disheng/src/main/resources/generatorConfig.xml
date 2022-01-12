@@ -12,21 +12,21 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库连接信息 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.87.56:3306/DataQuery"
-                        userId="root" password="MySQLPWD1!">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://****:3306/DataBase"
+                        userId="****" password="****">
         </jdbcConnection>
         <!--生成的model 包路径 -->
-        <javaModelGenerator targetPackage="com.yiche.bridge.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.test.bridge.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
         <!--生成xml mapper文件 路径 -->
-        <sqlMapGenerator targetPackage="com.yiche.bridge.mappering" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.test.bridge.mappering" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
         </sqlMapGenerator>
 
         <!-- 生成的Dao接口 的包路径 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yiche.bridge.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.bridge.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
         </javaClientGenerator>
         <!--对应数据库表名 -->
