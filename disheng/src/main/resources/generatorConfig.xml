@@ -5,32 +5,48 @@
 
 <generatorConfiguration>
     <!--数据库驱动包路径 -->
-    <classPathEntry location="D:\mymaven\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar"/>
+    <classPathEntry location="D:\jar_maven\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--关闭注释 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库连接信息 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://****:3306/DataBase"
-                        userId="****" password="****">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.120.55:13306/data_analy_zs"
+                        userId="root" password="1qaz2wsx">
         </jdbcConnection>
         <!--生成的model 包路径 -->
-        <javaModelGenerator targetPackage="com.test.bridge.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.transmit.datatransfer.domain" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
         <!--生成xml mapper文件 路径 -->
-        <sqlMapGenerator targetPackage="com.test.bridge.mappering" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="mapper.portrait" targetProject="src/main/resources">
             <property name="enableSubPackages" value="ture"/>
         </sqlMapGenerator>
 
         <!-- 生成的Dao接口 的包路径 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.bridge.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.transmit.datatransfer.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
         </javaClientGenerator>
         <!--对应数据库表名 -->
-        <table tableName="apisix_limit_rate" domainObjectName="LimitRatePOJO" enableCountByExample="false"
+        <table tableName="materialType" domainObjectName="materialType" enableCountByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="materialFeature" domainObjectName="materialFeature" enableCountByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="materialEigenValue" domainObjectName="materialEigenValue" enableCountByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="materialData" domainObjectName="materialData" enableCountByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="materialDetail" domainObjectName="materialDetail" enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
             <property name="useActualColumnNames" value="true"/>
         </table>
