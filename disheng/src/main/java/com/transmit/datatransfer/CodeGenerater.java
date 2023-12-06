@@ -100,10 +100,10 @@ public class CodeGenerater {
         strategy.setEntityBooleanColumnRemoveIsPrefix(true); // Boolean类型字段是否移除is前缀
         strategy.setRestControllerStyle(false); // 生成 @RestController 控制器，个人觉得有点多余
         //strategy.setSuperControllerClass("com.music.taosim.ant.common.BaseController");
-//        strategy.setInclude("material_data");  //当对某张表有所改动但只想重新生成这张表，可以这样设置
+        strategy.setInclude("material_data");  //当对某张表有所改动但只想重新生成这张表，可以这样设置
 //        strategy.setInclude("material_detail");
 //        strategy.setInclude("material_eigen_value");
-        strategy.setInclude("material_feature");
+//        strategy.setInclude("material_feature");
 //        strategy.setInclude("material_type");
 //        strategy.setControllerMappingHyphenStyle(true); // 驼峰转连字符 如 umps_user 变为 upms/user
         // strategy.setTablePrefix(pc.getModuleName() + "_"); // 表前缀
